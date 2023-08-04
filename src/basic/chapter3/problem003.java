@@ -22,20 +22,22 @@ public class problem003 {
 
             //m 범위 체크
             if (m >= 1 && m <= 100000) {
-                int[][] range = new int[2][m];
                 int sum = 0;
 
                 //세 번째 줄부터 m개 줄에 합을 구해야하는 구간 [i, j] 입력
-                for (int i = 0; i < m; i++) {
-                    for (int j = 0; j < 2; j++) {
-                        range[i][j] = scanner.nextInt();
-                    }
-
+                for (int k = 0; k < m; k++) {
                     //n개의 수 중 i번째 수에서 j번째 수까지 합 구하기
-                    for(int p = range[i][0]; p < range[i][2]; p++) {
-                        sum += nums[p];
+                    int i = scanner.nextInt();
+                    for (int j = scanner.nextInt(); j >= i && j <= nums.length; j--) {
+                        //합할 수 범위 체크
+                        if (nums[j-1] <= 1000) {
+                            sum += nums[j-1];
+                        }
                     }
                     System.out.println(sum);
+
+                    //한 줄 합 구한 뒤 sum 0으로 초기화
+                    sum = 0;
                 }
             } else {
                 System.out.println("m의 범위를 확인하고 다시 입력해주세요.");
